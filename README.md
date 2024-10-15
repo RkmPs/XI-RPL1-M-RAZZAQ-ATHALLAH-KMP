@@ -5,3 +5,5 @@
 - jalankan perintah php artisan make:model (nama model (disini Products)) -m (agar sekallian membuat migrationnya)
 - edit model dan migration
 - jalankan php artisan migrate
+> [!NOTE]
+> Jika folder tugas4 tidak bisa dibuka, tugas ini juga di upload di branch master
