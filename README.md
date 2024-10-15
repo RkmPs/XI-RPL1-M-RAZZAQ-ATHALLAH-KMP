@@ -1,6 +1,6 @@
 > [!NOTE]
-> Jika folder tugas4 tidak bisa dibuka, tugas ini juga di upload di branch master
-> projek masih belum selesai
+> - Jika folder tugas4 tidak bisa dibuka, tugas ini juga di upload di branch master
+> - projek masih belum selesai
 
 ## Tugas 1
 - Membuat tampilan web sederhana yang berisi tentang PBO
