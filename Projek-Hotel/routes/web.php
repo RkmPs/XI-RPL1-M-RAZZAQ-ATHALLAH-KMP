@@ -18,9 +18,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+                                                        //middlerware RoleChceck blm bekerja
+Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'RoleCheck' , 'as' => 'admin.'], function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
-Route::middleware('role:super admin,admin')->group(function () {
-     Route::get('admin.dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-});
+})  ;
 
 require __DIR__.'/auth.php';
