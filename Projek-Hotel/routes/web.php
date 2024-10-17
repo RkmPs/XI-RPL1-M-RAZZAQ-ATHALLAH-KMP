@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
                                                         //middlerware RoleChceck blm bekerja
 Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'RoleCheck' , 'as' => 'admin.'], function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    Route::resource('/', App\Http\Controllers\AdminController::class);
 
 })  ;
 
