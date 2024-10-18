@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,12 +13,11 @@
 
         <!-- Scripts -->
         <script>
-
             type="module" src="http://[::1]:5173/resources/js/app.js"
         </script>
         
         <link rel="stylesheet" href="http://[::1]:5173/resources/css/app.css" />
-      
+        @vite('resources/css/app.css')
 
     </head>
     <body class="font-sans antialiased">
@@ -164,13 +162,13 @@
                     Image
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Product name
+                    ID
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Color
+                    Room type
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Category
+                    Status
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Price
@@ -184,7 +182,7 @@
             @forelse ($rooms as $room)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="w-4 p-4">
-                <img src="{{ asset('/storage/rooms/'.$rooms -> image) }}" class="">
+                <img src="{{ asset('/storage/rooms/'.$room -> image) }}" >
                 </td>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $room -> id }}
@@ -196,16 +194,16 @@
                     {{ $room -> status}}
                 </td>
                 <td class="px-6 py-4">
-                    {{ "Rp " . number_format($room -> pricepPerNights,2,',','.') }}
+                    {{ "Rp " . number_format($room -> pricePerNights,2,',','.') }}
                 </td>
                 <td class="px-6 py-4">
                    
-                    <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('rooms.destroy', $room->id) }}" method="POST">
+                    <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('admin.destroy', $room->id) }}" method="POST" class="flex justify-between">
                         <a href="{{ route('admin.show', $room->id) }}" class="font-medium text-green-600 dark:text-green-500 hover:underline">SHOW</a>
                         <a href="{{ route('admin.edit', $room->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">EDIT</a>
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                        <button type="submit" class="font-medium text-red-600 dark:text-green-500 hover:underline">DELETE</button>
                     </form>             
                 </td>
             </tr>
