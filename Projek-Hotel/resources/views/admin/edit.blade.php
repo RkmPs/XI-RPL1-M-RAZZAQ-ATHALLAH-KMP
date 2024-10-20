@@ -25,18 +25,15 @@
         <div class="flex justify-center pt-5">
 
             <div class="block max-w-2xl w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <h5 class=" text-start mb-1 pb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Add Room</h5>
+                <h5 class=" text-start mb-1 pb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Edit Room {{ $rooms->id}} <br> {{ $rooms->roomType}} Room</h5>
                             
-                <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data" class="max-w-lg text-left">
+                <form action="{{ route('admin.update', $rooms->id) }}" method="POST" enctype="multipart/form-data" class="max-w-lg text-left">
                   @csrf
+                  @method('PUT')
                   <label for="user_avatar" class="block mb-1 pt-2 text-lg font-medium  text-gray-900 dark:text-white">Upload file</label>
-                  <input id="user_avatar" type="file" name="image" class="@error('image') is-invalid @enderror block w-full text-base text-gray-900  border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+                  <input id="user_avatar" type="file" name="image" class=" block w-full text-base text-gray-900  border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
 
-                  @error('image')
-                        <div class="flex items-center p-4 py-3 my-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">
-                        {{ $message }}
-                        </div>
-                  @enderror
+                  
 
                     <label for="roomType" class="block mt-3 mb-1 text-lg font-medium text-gray-900 dark:text-white">Tipe Ruangan</label>
                     <select name="roomType" id="roomType" class="@error('roomType') is-invalid @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -55,7 +52,7 @@
                     @enderror
 
                     <label for="base-input" class="block mt-3 mb-1 text-lg font-medium text-gray-900 dark:text-white">Price /Night</label>
-                    <input type="text" id="base-input" name="pricePerNights" value="{{ old('pricePerNights') }}" placeholder="Masukan Harga Permalam" class="@error('roomType') is-invalid @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <input type="text" id="base-input" name="pricePerNights" value="{{ old( 'pricePerNights', $rooms->pricePerNights) }}" placeholder="Masukan Harga Permalam" class="@error('roomType') is-invalid @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
   
                     @error('pricePerNights')
                         <div class="flex items-center p-4 py-3 my-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">

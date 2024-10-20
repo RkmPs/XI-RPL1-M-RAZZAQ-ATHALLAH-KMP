@@ -19,9 +19,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
                                                         //middlerware RoleChceck blm bekerja
-Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'RoleCheck' , 'as' => 'admin.'], function () {
-    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
-    Route::resource('/', App\Http\Controllers\AdminController::class);
+Route::group([ 'middleware' => 'auth', 'RoleCheck'], function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::resource('/admin', App\Http\Controllers\AdminController::class);
 
 })  ;
 

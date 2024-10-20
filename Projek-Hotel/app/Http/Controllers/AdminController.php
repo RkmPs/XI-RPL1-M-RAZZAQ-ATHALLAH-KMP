@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\tabel_room;
+use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
+
 
 class AdminController extends Controller
 {
@@ -29,7 +32,7 @@ class AdminController extends Controller
 
         //validate form
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,jpg,png|max:2048',
+            'image' => 'required|image|max:2048',
             'status' => 'required',
             'roomType' => 'required',
             'pricePerNights' => 'required|numeric'
@@ -48,8 +51,73 @@ class AdminController extends Controller
             'pricePerNights' => $request->pricePerNights
         ]);
 
-        return redirect()->route('admin.dashboard')->with(['success' => 'Product Created']);
+        return redirect()->route('admin.dashboard')->with(['success' => 'Room added']);
     }
 
+    public function show(string $id): View {
+        $rooms = tabel_room::findOrFail($id);
+        return view('admin.show', compact('rooms'));
+    }
 
+    public function edit(string $id): View {
+        $rooms = tabel_room::findOrFail($id);
+        return view('admin.edit', compact('rooms'));
+    }
+
+    public function update(Request $request, $id): RedirectResponse{
+
+        //validate form
+        $request->validate([
+            'image' => 'image|max:2048',
+            'status' => 'required',
+            'roomType' => 'required',
+            'pricePerNights' => 'required|numeric'
+
+        ]);
+
+        $rooms = tabel_room::findOrFail($id);
+
+        //jika update image
+        if($request->hasFile('image')){
+
+
+            //upload new image
+            $image = $request->file('image');
+            $image->storeAs('public/rooms', $image->hashName());
+
+            //delete old image
+            Storage::delete('public/rooms/'.$rooms->image);
+
+            //update product with new image
+            $rooms->update([
+                'image'         => $image->hashName(),
+                'roomType'         => $request->roomType,
+                'pricePerNights'   => $request->pricePerNights,
+                'status'         => $request->status
+            ]);
+        }
+        //edit tanpa image
+        else{
+            $rooms->update([
+                'roomType' => $request->roomType,
+                'pricePerNights' => $request->pricePerNights,
+                'status' => $request->status
+            ]); 
+        }
+        return redirect()->route('admin.dashboard')->with(['success' => 'Room update']);
+    }
+    public function destroy($id): RedirectResponse
+    {
+        //get product by ID
+        $rooms = tabel_room::findOrFail($id);
+
+        //delete image
+        Storage::delete('public/rooms/'. $rooms->image);
+
+        //delete product
+        $rooms->delete();
+
+        //redirect to index
+        return redirect()->route('admin.dashboard')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
 }

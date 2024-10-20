@@ -17,7 +17,7 @@
         </script>
         
         <link rel="stylesheet" href="http://[::1]:5173/resources/css/app.css" />
-        @vite('resources/css/app.css')
+        @vite(['resources/css/app.css','resources/js/app.js'])
 
     </head>
     <body class="font-sans antialiased">
@@ -220,10 +220,28 @@
 
 </div>
 
-            </div>
-        </div>
-    </div>
             </main>
-        </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                //message with sweetalert
+                @if(session('success'))
+                    Swal.fire({
+                        icon: "success",
+                        title: "BERHASIL",
+                        text: "{{ session('success') }}",
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                @elseif(session('error'))
+                    Swal.fire({
+                        icon: "error",
+                        title: "GAGAL!",
+                        text: "{{ session('error') }}",
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                @endif
+            </script>
     </body>
 </html>
