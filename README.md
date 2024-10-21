@@ -27,7 +27,7 @@
 > - cari 'collation' => env('DB_COLLATION', 'utf8mb4_0900_ai_ci'), di config untuk mysql
 > - ubah utf8mb4_0900_ai_ci menjadi utf8mb4_unicode_ci
 
-## Tugas 5
+## Tugas 5 (Projek-Hotel)
 - Membuat app CRUD
 - di projek ini saya membuat app management hotel
 - 
