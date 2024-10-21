@@ -50,13 +50,13 @@
    php artisan migrate
    ```
 
-6. # Setelah aplikasi dijalankan, click tombol register pada kanan atas. kemudian buat akun
+6. ### Setelah aplikasi dijalankan, click tombol register pada kanan atas. kemudian buat akun
 
-7. # Buka phpmyadmin, buka database dbhotel, buka tabel user lalu edit user yang sudah dibuat tadi.
+7. ### Buka phpmyadmin, buka database dbhotel, buka tabel user lalu edit user yang sudah dibuat tadi.
    ubah role menjadi admin
 
-8. # kembali ke dashboard lalu klik tombol admin
+8. ### kembali ke dashboard lalu klik tombol admin
 
-9. # click add product untuk menambahkan row tabel, untuk foto sudah disediakaan di path public/src
+9. ### click add product untuk menambahkan row tabel, untuk foto sudah disediakaan di path public/src
  
-10. # jika row tabel sudah ada, bisa memilih untuk di show, update ataupun delete
+10. ### jika row tabel sudah ada, bisa memilih untuk di show, update ataupun delete
