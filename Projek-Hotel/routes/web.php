@@ -18,11 +18,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-                                                        //middlerware RoleChceck blm bekerja
+                           //middlerware RoleChceck blm bekerja
 Route::group([ 'middleware' => 'auth', 'RoleCheck'], function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::resource('/admin', App\Http\Controllers\AdminController::class);
-
-})  ;
+})->middleware(['auth', 'RoleCheck']);
 
 require __DIR__.'/auth.php';

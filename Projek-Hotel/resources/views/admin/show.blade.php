@@ -1,40 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Show Products - SantriKoding.com</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body style="background: lightgray">
 
-    <div class="container mt-5 mb-5">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card border-0 shadow-sm rounded">
-                    <div class="card-body">
-                        <img src="{{ asset('/storage/rooms/'.$rooms->image) }}" class="rounded" style="width: 100%">
-                    </div>
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hotelu</title>
+        @vite('resources/css/app.css')
+  </head>
+<body>
+
+
+<div class="w-1/2 mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    
+    <div id="fullWidthTabContent" class="border-t border-gray-200 dark:border-gray-600">
+    <img class="max-h-md max-w-xl w-full rounded-lg shadow-xl dark:shadow-gray-800" src="{{ asset('/storage/rooms/'.$rooms -> image) }}" alt="image description">
+        <div class=" flex justify-between text-center p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="stats" role="tabpanel" aria-labelledby="stats-tab">
+       
+                <div class="flex flex-col items-center justify-center">
+                    <dt class="mb-2 text-lg font-extrabold">Room No.</dt>
+                    <dd class="text-gray-500 dark:text-gray-400">{{$rooms->id}}</dd>
                 </div>
-            </div>
-            <div class="col-md-8">
-                <div class="card border-0 shadow-sm rounded">
-                    <div class="card-body">
-                        <h3>{{ $rooms->id }}</h3>
-                        <hr/>
-                        <p>{{ "Rp " . number_format($rooms->pricePerNights,2,',','.') }}</p>
-                        <code>
-                            <p>{!! $rooms->roomType !!}</p>
-                        </code>
-                        <hr/>
-                        <p>Stock : {{ $rooms->status }}</p>
-                    </div>
+                <div class="flex flex-col items-center justify-center">
+                    <dt class="mb-2 text-lg font-extrabold">Roomtype</dt>
+                    <dd class="text-gray-500 dark:text-gray-400">{{$rooms->roomType}}</dd>
                 </div>
-            </div>
+                <div class="flex flex-col items-center justify-center">
+                    <dt class="mb-2 text-lg font-extrabold">Price /Nights</dt>
+                    <dd class="text-gray-500 dark:text-gray-400">{{ "Rp " . number_format($rooms -> pricePerNights,2,',','.') }}</dd>
+                </div>
+                <div class="flex flex-col items-center justify-center">
+                    <dt class="mb-2 text-lg font-extrabold">Status</dt>
+                    <dd class="text-gray-500 dark:text-gray-400">{{$rooms->status}}</dd>
+                </div>
+
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    
 </body>
 </html>
