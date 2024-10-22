@@ -60,3 +60,9 @@
 9. ### click add product untuk menambahkan row tabel, untuk foto sudah disediakaan di path public/src
  
 10. ### jika row tabel sudah ada, bisa memilih untuk di show, update ataupun delete
+
+> [!NOTE]
+> - Agar foto bisa muncul di view, silahkan terlebih dahulu mengubungkan storage dengan public dengan
+ ``` bash
+php artisan storage:link
+```
