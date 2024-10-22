@@ -63,6 +63,6 @@
 
 > [!NOTE]
 > - Agar foto bisa muncul di view, silahkan terlebih dahulu mengubungkan storage dengan public dengan
- ``` bash
-php artisan storage:link
-```
+> ``` bash
+>php artisan storage:link
+>```
