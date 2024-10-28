@@ -1,6 +1,6 @@
 > [!NOTE]
 > - Jika folder tugas4 tidak bisa dibuka, tugas ini juga di upload di branch master
-> - projek (Tugas 5) masih belum selesai
+
 
 ## Tugas 1
 - Membuat tampilan web sederhana yang berisi tentang PBO
@@ -27,7 +27,7 @@
 > - cari 'collation' => env('DB_COLLATION', 'utf8mb4_0900_ai_ci'), di config untuk mysql
 > - ubah utf8mb4_0900_ai_ci menjadi utf8mb4_unicode_ci
 
-## Tugas 5
+## Tugas 5 (Projek-Hotel)
 - Membuat app CRUD
 - di projek ini saya membuat app management hotel
 - 
