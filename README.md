@@ -30,4 +30,7 @@
 ## Tugas 5 (Projek-Hotel)
 - Membuat app CRUD
 - di projek ini saya membuat app management hotel
-- 
+
+## Tugas 6 (Auth)
+- Membuat Auth menggunakan laravel breeze
+  
